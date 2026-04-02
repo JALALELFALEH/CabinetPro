@@ -41,6 +41,11 @@ export default async function Home() {
           )}
         </div>
       </div>
+      <footer className="mt-8">
+        <p className="text-center text-sm">
+          &copy; 2026 Cabinet-pro Management System.All rights reserved.
+        </p>
+      </footer>
     </div>
   );
 }
