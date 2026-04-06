@@ -22,21 +22,7 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <header className="flex justify-end items-center p-4 gap-4 h-16">
-            {!userId ? (
-              <>
-                <SignInButton />
-                <SignUpButton>
-                  <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                    Register now
-                  </button>
-                </SignUpButton>
-              </>
-            ) : (
-              <UserButton />
-            )}
-          </header>
-
+          
           <main>{children}</main>
         </body>
       </html>
