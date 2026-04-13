@@ -2,6 +2,7 @@
 // npm install --save-dev prisma dotenv
 import 'dotenv/config';
 import { defineConfig, env } from 'prisma/config';
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 export default defineConfig({
   schema: './prisma/schema.prisma',
@@ -9,3 +10,30 @@ export default defineConfig({
     url: env('DATABASE_URL'),
   },
 });
+
+
+// 1. هنا كتحط "فقط" الصفحات اللي مسموح للناس يشوفوهم بلا ما يديرو Login
+// أي صفحة ما كايناش هنا، غتكون محمية تلقائياً (Auto-protected)
+const isPublicRoute = createRouteMatcher([
+  '/', 
+  '/sign-in(.*)', 
+  '/sign-up(.*)',
+  '/api/webhook(.*)' // إلا كنتي غتخدم بـ Webhooks مستقبلاً
+]);
+
+export default clerkMiddleware(async (auth, request) => {
+  // 2. كنشوفو واش الصفحة اللي داخل ليها المستخدم "ماشي" Public
+  if (!isPublicRoute(request)) {
+    // إلا ما كانتش Public، كنفرضو عليه يدير Login
+    await auth.protect();
+  }
+});
+
+export const config = {
+  matcher: [
+    // هاد "التعويذة" كتقول لـ Next.js يطبق هاد الحماية على كاع المسارات
+    // ما عدا الملفات التقنية (صور، ستايل، إلخ)
+    '/((?!_next|[^?]\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).)',
+    '/(api|trpc)(.*)',
+  ],
+};

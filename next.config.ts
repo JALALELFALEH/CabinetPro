@@ -1,13 +1,13 @@
 import type { NextConfig } from "next";
-import { hostname } from "os";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  images :{
-    remotePatterns:[
-      {hostname: "images.pexels.com"}
-    ]
-  }
+  reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "images.pexels.com" },
+      { protocol: "https", hostname: "res.cloudinary.com" },
+    ],
+  },
+  typescript: { ignoreBuildErrors: false },
 };
-
 export default nextConfig;
