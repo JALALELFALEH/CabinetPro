@@ -1,8 +1,5 @@
-type RouteAccessProps = {
-    [key: string]: string[];
-};
-
-export const routeAccess = {
-    "/admin(.*)": ['admin'],
-    "/patient(.*)": ['admin', 'patient', 'doctor'],
+export const routeAccess: Record<string, string[]> = {
+  "/admin(.*)":   ["admin"],
+  "/doctor(.*)":  ["doctor"],
+  "/patient(.*)": ["patient"],
 };
