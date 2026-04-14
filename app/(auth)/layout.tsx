@@ -16,7 +16,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
         />
         <div className="absolute inset-0 bg-blue-900/60" />
         <div className="absolute inset-0 flex flex-col items-center justify-center text-white z-10">
-          <h1 className="text-4xl font-bold tracking-tight">Cabinet-pro</h1>
+          <h1 className="text-4xl font-bold tracking-tight">Cabinetpro</h1>
           <p className="text-base mt-2 text-blue-100">
             Welcome to your medical platform
           </p>
