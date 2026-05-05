@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: { default: "Kinda HMS", template: "%s | Kinda HMS" },
+  title: { default: "Cabinetpro", template: "%s | Cabinetpro" },
   description: "A modern Healthcare Management System built with Next.js 16.",
   keywords: ["healthcare", "hospital", "management", "appointments"],
 };

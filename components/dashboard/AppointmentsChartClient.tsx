@@ -1,4 +1,5 @@
 "use client";
+
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid,
   Tooltip, Legend, ResponsiveContainer,
@@ -11,7 +12,11 @@ interface DataPoint {
   scheduled: number;
 }
 
-export default function AppointmentsChartClient({ data }: { data: DataPoint[] }) {
+export default function AppointmentsChartClient({
+  data,
+}: {
+  data: DataPoint[];
+}) {
   return (
     <ResponsiveContainer width="100%" height={280}>
       <BarChart data={data} margin={{ top: 5, right: 20, left: 0, bottom: 5 }}>
@@ -20,8 +25,20 @@ export default function AppointmentsChartClient({ data }: { data: DataPoint[] })
         <YAxis tick={{ fontSize: 12 }} />
         <Tooltip />
         <Legend />
-        <Bar dataKey="scheduled" fill="#818cf8" name="Scheduled" radius={[3, 3, 0, 0]} />
-        <Bar dataKey="completed" fill="#34d399" name="Completed" radius={[3, 3, 0, 0]} />
+
+        <Bar
+          dataKey="scheduled"
+          fill="#818cf8"
+          name="Scheduled"
+          radius={[3, 3, 0, 0]}
+        />
+
+        <Bar
+          dataKey="completed"
+          fill="#34d399"
+          name="Completed"
+          radius={[3, 3, 0, 0]}
+        />
       </BarChart>
     </ResponsiveContainer>
   );
